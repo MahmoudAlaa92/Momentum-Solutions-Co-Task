@@ -1,29 +1,36 @@
+//
+//  MovieDetailsViewController.swift
+//  Movie Listing
+//
+//  Created by Mahmoud Alaa on 22/07/2025.
+//
 
 import UIKit
-import Combine
 
-class HomeViewController: UIViewController {
+class MovieDetailsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     // MARK: - Properties
-    private var navigationBarBehavior: HomeNavBar?
-    private var viewModel = HomeViewModel()
+    private var viewModel = MovieDetailsView()
     private var sections: [CollectionViewDataSource] = []
     private var layoutSections:[LayoutSectionProvider] = []
-    
-    private var sliderItem: SliderCollectionViewSection?
-    private var recommendedItems: RecommendedItemsCollectionViewSection?
-    private var dailyEssentialItem: TopSearchesCollectionViewSection?
     ///
-    private var subscriptions = Set<AnyCancellable>()
-    // MARK: - Lifecycle
+    private var dailyEssentialItem: MovieHeaderCollectionViewSection?
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
         configureSections()
         setUpCollectionView()
         cofigureCompositianalLayout()
-        configureNavBar()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     private func setUpCollectionView() {
         collectionView.delegate = self
@@ -35,46 +42,19 @@ class HomeViewController: UIViewController {
 }
 // MARK: - Configuration
 //
-extension HomeViewController {
+extension MovieDetailsViewController {
     
     /// Configure Sections
     private func configureSections() {
-        let sliderProvider = SliderCollectionViewSection(sliderItems: viewModel.sliderItems)
-        self.sliderItem = sliderProvider
         
-        let recommendedItems = RecommendedItemsCollectionViewSection(dailyEssentail: viewModel.RecommendedItems)
-        self.recommendedItems = recommendedItems
-        
-        let dailyEssentials = TopSearchesCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
+        let dailyEssentials = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
         self.dailyEssentialItem = dailyEssentials
-
         
-        sections = [sliderProvider ,recommendedItems ,dailyEssentials]
+        sections = [dailyEssentials]
         layoutSections = [
-            SliderSectionLayoutProvider(),
-            RecommendedItemsSectionLayoutProvider(),
-            TopSearchesSectionLayoutProvider()
+            DailyEssentailSectionLayoutProvider()
         ]
     }
-    /// NavBar
-    func configureNavBar() {
-        navigationItem.backButtonTitle = ""
-        navigationBarBehavior = HomeNavBar(navigationItem: navigationItem)
-        
-        let userName = "Hi, Mohit"
-        let subTitle = "Let's watch a movie"
-        let finalImage = Images.profilePhoto
-        navigationBarBehavior?.configure(
-            onNotification: {
-            },
-            onSearch: {
-            },
-            userName: userName,
-            subtitleLabel: subTitle,
-            userImage: finalImage
-        )
-    }
-    
     /// CompositianalLayout
     private func cofigureCompositianalLayout() {
         
@@ -84,7 +64,7 @@ extension HomeViewController {
 }
 // MARK: - UICollectionViewDelegate
 //
-extension HomeViewController: UICollectionViewDelegate {
+extension MovieDetailsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let selectable = sections[indexPath.section] as? CollectionViewDelegate {
             selectable.collectionView(collectionView, didSelectItemAt: indexPath)
@@ -93,7 +73,7 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 // MARK: - UICollectionViewDataSource
 //
-extension HomeViewController: UICollectionViewDataSource {
+extension MovieDetailsViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count

@@ -13,7 +13,7 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
-//    @IBOutlet weak var backgroundOfButton: UIView!
+    @IBOutlet weak var backgroundOfButton: UIView!
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -51,7 +51,7 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
         leftView.clipsToBounds = true
         leftView.layer.masksToBounds = true
         
-//        backgroundOfButton.layer.cornerRadius = 16
-//        backgroundOfButton.layer.masksToBounds = true
+        backgroundOfButton.layer.cornerRadius = 12
+        backgroundOfButton.layer.masksToBounds = true
     }
 }

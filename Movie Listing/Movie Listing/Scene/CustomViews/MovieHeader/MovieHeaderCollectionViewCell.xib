@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieHeaderCollectionViewCell" customModule="Movie_Listing" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="262" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="262" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-YD-1eR" userLabel="Content View">
+                        <rect key="frame" x="0.0" y="0.0" width="262" height="140"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hxd-5b-PZg">
+                                <rect key="frame" x="0.0" y="0.0" width="262" height="140"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJQ-tz-1tg">
+                                <rect key="frame" x="106" y="45" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FHO-bt-c9E"/>
+                                    <constraint firstAttribute="width" constant="50" id="nJA-JW-zvz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Cart Selected"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFt-xa-uqH">
+                                <rect key="frame" x="10" y="101" width="242" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7iS-PG-kid"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="nBp-Tg-ejo">
+                                <rect key="frame" x="10" y="-3.3333333333333339" width="242" height="38.333333333333336"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-NF-tgg">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="38.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="1vc-ji-T2g"/>
+                                            <constraint firstAttribute="height" constant="38.333333333333336" id="plE-8e-nCO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqk-0u-9Vz">
+                                        <rect key="frame" x="167" y="0.0" width="75" height="38.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38.333333333333336" id="3wV-Q3-i8Y"/>
+                                            <constraint firstAttribute="width" constant="75" id="RC4-JN-UPW"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="icon-back"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BJQ-tz-1tg" firstAttribute="centerX" secondItem="hgd-YD-1eR" secondAttribute="centerX" id="0v5-ih-0Yo"/>
+                            <constraint firstItem="VFt-xa-uqH" firstAttribute="leading" secondItem="hgd-YD-1eR" secondAttribute="leading" constant="10" id="55O-Oa-gVc"/>
+                            <constraint firstItem="Hxd-5b-PZg" firstAttribute="leading" secondItem="hgd-YD-1eR" secondAttribute="leading" id="FmH-Og-kee"/>
+                            <constraint firstItem="VFt-xa-uqH" firstAttribute="top" secondItem="BJQ-tz-1tg" secondAttribute="bottom" constant="6" id="HJB-cm-WU2"/>
+                            <constraint firstAttribute="trailing" secondItem="Hxd-5b-PZg" secondAttribute="trailing" id="LxI-k8-6dh"/>
+                            <constraint firstItem="nBp-Tg-ejo" firstAttribute="leading" secondItem="hgd-YD-1eR" secondAttribute="leading" constant="10" id="dJ2-Sb-oeD"/>
+                            <constraint firstAttribute="trailing" secondItem="VFt-xa-uqH" secondAttribute="trailing" constant="10" id="ibQ-HN-i8y"/>
+                            <constraint firstItem="Hxd-5b-PZg" firstAttribute="top" secondItem="hgd-YD-1eR" secondAttribute="top" id="jhX-b9-c1s"/>
+                            <constraint firstAttribute="trailing" secondItem="nBp-Tg-ejo" secondAttribute="trailing" constant="10" id="kqn-fX-tSw"/>
+                            <constraint firstAttribute="bottom" secondItem="Hxd-5b-PZg" secondAttribute="bottom" id="so9-4y-u5z"/>
+                            <constraint firstItem="BJQ-tz-1tg" firstAttribute="centerY" secondItem="hgd-YD-1eR" secondAttribute="centerY" id="w7c-sY-gZh"/>
+                            <constraint firstItem="BJQ-tz-1tg" firstAttribute="top" secondItem="nBp-Tg-ejo" secondAttribute="bottom" constant="10" id="zT5-sF-UoK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="hgd-YD-1eR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1f2-5B-d47"/>
+                <constraint firstAttribute="bottom" secondItem="hgd-YD-1eR" secondAttribute="bottom" id="Rfb-TW-mdz"/>
+                <constraint firstItem="hgd-YD-1eR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aig-8g-Ocb"/>
+                <constraint firstAttribute="trailing" secondItem="hgd-YD-1eR" secondAttribute="trailing" id="xX1-CY-Oau"/>
+            </constraints>
+            <size key="customSize" width="262" height="140"/>
+            <connections>
+                <outlet property="backButton" destination="w8C-NF-tgg" id="3tE-Lm-XLm"/>
+                <outlet property="buttonImage" destination="BJQ-tz-1tg" id="hlE-cG-slc"/>
+                <outlet property="imageCell" destination="Hxd-5b-PZg" id="kQl-d9-nev"/>
+                <outlet property="nameOfCell" destination="VFt-xa-uqH" id="151-lQ-dgh"/>
+                <outlet property="rightIcon" destination="Jqk-0u-9Vz" id="ytQ-W5-3Zd"/>
+                <outlet property="topView" destination="hgd-YD-1eR" id="DeA-LM-Tny"/>
+            </connections>
+            <point key="canvasLocation" x="207.63358778625954" y="85.91549295774648"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Cart Selected" width="50" height="50"/>
+        <image name="back" width="128" height="128"/>
+        <image name="icon-back" width="16.666666030883789" height="16.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

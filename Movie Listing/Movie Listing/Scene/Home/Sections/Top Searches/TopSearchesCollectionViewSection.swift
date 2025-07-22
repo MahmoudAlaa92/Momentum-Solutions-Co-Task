@@ -65,7 +65,7 @@ extension TopSearchesCollectionViewSection: CollectionViewDelegate {
 }
 // MARK: - Layout
 //
-struct DailyEssentailSectionLayoutProvider: LayoutSectionProvider {
+struct TopSearchesSectionLayoutProvider: LayoutSectionProvider {
     
     func layoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
