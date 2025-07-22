@@ -1,9 +1,3 @@
-//
-//  SliderImagesCollectionViewCell.swift
-//  Movie Listing
-//
-//  Created by Mahmoud Alaa on 22/07/2025.
-//
 
 import UIKit
 
@@ -13,12 +7,13 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "SliderImagesCollectionViewCell"
 
     // MARK: - Outlets
-    @IBOutlet weak var leftStackView: UIStackView!
+    @IBOutlet weak var leftView: UIView!
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
+//    @IBOutlet weak var backgroundOfButton: UIView!
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -38,7 +33,7 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
         
         topLabel.textColor = Colors.secondaryGray
         middleLabel.textColor = Colors.secondaryGray
-        bottomLabel.textColor = Colors.secondaryGray
+        bottomLabel.textColor = Colors.primaryMove
         
         topLabel.numberOfLines = 2
         middleLabel.numberOfLines = 2
@@ -49,7 +44,14 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
         bottomLabel.lineBreakMode = .byWordWrapping
         
         rightImage.contentMode = .scaleAspectFill
-        let cornerRadius = leftStackView.bounds.height / 2.0
-        leftStackView.roundCorners(corners: [.topRight, .bottomRight], radius: cornerRadius)
+        
+        let cornerRadius = leftView.bounds.height / 2.0
+        leftView.roundCorners(corners: [.topRight, .bottomRight], radius: cornerRadius)
+        leftView.backgroundColor = Colors.primaryMove
+        leftView.clipsToBounds = true
+        leftView.layer.masksToBounds = true
+        
+//        backgroundOfButton.layer.cornerRadius = 16
+//        backgroundOfButton.layer.masksToBounds = true
     }
 }

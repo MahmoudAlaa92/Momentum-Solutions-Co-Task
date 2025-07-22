@@ -1,9 +1,3 @@
-//
-//  Fonts+Style.swift
-//  Movie Listing
-//
-//  Created by Mahmoud Alaa on 22/07/2025.
-//
 
 import UIKit
 
@@ -19,7 +13,6 @@ public extension UIFont {
         return UIFont(name: "DMSans-Medium", size: 12) ?? .systemFont(ofSize: 12)
     }
 }
-
 // MARK: - Labels
 //
 public extension UIFont {
@@ -63,10 +56,7 @@ public extension UIFont {
     static var caption1: UIFont {
         return UIFont(name: "DMSans-Regular", size: 10) ?? .systemFont(ofSize: 10)
     }
-    
-    static var caption2: UIFont {
-        return UIFont(name: "DMSans-Regular", size: 8) ?? .systemFont(ofSize: 8)
-    }
+ 
 }
 
 // MARK: - TextField

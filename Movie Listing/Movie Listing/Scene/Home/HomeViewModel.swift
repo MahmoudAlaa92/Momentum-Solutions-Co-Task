@@ -1,9 +1,3 @@
-//
-//  HomeViewModel.swift
-//  Movie Listing
-//
-//  Created by Mahmoud Alaa on 22/07/2025.
-//
 
 import Combine
 import UIKit
@@ -37,4 +31,33 @@ class HomeViewModel {
         ),
     ]
 
+    @Published var RecommendedItems: [RecommendedItem] = [
+        .init(
+            image: Images.homeDecore,
+            name: "The Greatest ",
+            offer: "Romance Drama"
+        ),
+        .init(
+            image: Images.art,
+            name: "The Greatest ",
+            offer: "Romance Drama"
+        ),
+        .init(
+            image: Images.craft,
+            name: "The Greatest ",
+            offer: "Romance Drama"
+        ),
+        .init(
+            image: Images.fashion,
+            name: "The Greatest ",
+            offer: "Romance Drama"
+        ),
+    ]
+    
+    @Published var dailyEssentailItems: [TopSearchesItem] = [
+        .init(image: Images.homeDecore, name: "Bridegerton", offer: "Romance Drama"),
+        .init(image: Images.art, name: "Bridegerton", offer: "Romance Drama"),
+        .init(image: Images.craft, name: "Bridegerton", offer: "Romance Drama"),
+        .init(image: Images.fashion, name: "Bridegerton", offer: "Romance Drama")
+    ]
 }

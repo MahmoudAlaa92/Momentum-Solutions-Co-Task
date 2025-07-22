@@ -1,9 +1,3 @@
-//
-//  HomeViewController.swift
-//  Movie Listing
-//
-//  Created by Mahmoud Alaa on 22/07/2025.
-//
 
 import UIKit
 import Combine
@@ -18,6 +12,8 @@ class HomeViewController: UIViewController {
     private var layoutSections:[LayoutSectionProvider] = []
     
     private var sliderItem: SliderCollectionViewSection?
+    private var recommendedItems: RecommendedItemsCollectionViewSection?
+    private var dailyEssentialItem: TopSearchesCollectionViewSection?
     ///
     private var subscriptions = Set<AnyCancellable>()
     // MARK: - Lifecycle
@@ -29,7 +25,6 @@ class HomeViewController: UIViewController {
         cofigureCompositianalLayout()
         configureNavBar()
     }
-    
     private func setUpCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,11 +41,19 @@ extension HomeViewController {
     private func configureSections() {
         let sliderProvider = SliderCollectionViewSection(sliderItems: viewModel.sliderItems)
         self.sliderItem = sliderProvider
-
-        sections = [sliderProvider]
         
+        let recommendedItems = RecommendedItemsCollectionViewSection(dailyEssentail: viewModel.RecommendedItems)
+        self.recommendedItems = recommendedItems
+        
+        let dailyEssentials = TopSearchesCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
+        self.dailyEssentialItem = dailyEssentials
+
+        
+        sections = [sliderProvider ,recommendedItems ,dailyEssentials]
         layoutSections = [
-            SliderSectionLayoutProvider()
+            SliderSectionLayoutProvider(),
+            RecommendedItemsSectionLayoutProvider(),
+            DailyEssentailSectionLayoutProvider()
         ]
     }
     /// NavBar
@@ -63,10 +66,8 @@ extension HomeViewController {
         let finalImage = Images.profilePhoto
         navigationBarBehavior?.configure(
             onNotification: {
-                
             },
             onSearch: {
-                
             },
             userName: userName,
             subtitleLabel: subTitle,
