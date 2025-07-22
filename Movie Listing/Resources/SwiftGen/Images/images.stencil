@@ -1,0 +1,18 @@
+//
+//  images.stencil
+//  Movie Listing
+//
+//  Created by Mahmoud Alaa on 22/07/2025.
+//
+
+import UIKit
+
+public enum Images {
+    {% for image in catalogs.first.assets %}
+    
+    public static var {{image.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: UIImage {
+        UIImage(named: "{{ image.name }}")!
+    }
+    {% endfor %}
+}
+

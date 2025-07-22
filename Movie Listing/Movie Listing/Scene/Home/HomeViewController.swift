@@ -1,0 +1,116 @@
+//
+//  HomeViewController.swift
+//  Movie Listing
+//
+//  Created by Mahmoud Alaa on 22/07/2025.
+//
+
+import UIKit
+import Combine
+
+class HomeViewController: UIViewController {
+    // MARK: - Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    // MARK: - Properties
+    private var navigationBarBehavior: HomeNavBar?
+    private var viewModel = HomeViewModel()
+    private var sections: [CollectionViewDataSource] = []
+    private var layoutSections:[LayoutSectionProvider] = []
+    
+    private var sliderItem: SliderCollectionViewSection?
+    ///
+    private var subscriptions = Set<AnyCancellable>()
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpCollectionView()
+        configureSections()
+        setUpCollectionView()
+        cofigureCompositianalLayout()
+        configureNavBar()
+    }
+    
+    private func setUpCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        /// Registere cells
+        sections.forEach { $0.registerCells(in: collectionView) }
+    }
+}
+// MARK: - Configuration
+//
+extension HomeViewController {
+    
+    /// Configure Sections
+    private func configureSections() {
+        let sliderProvider = SliderCollectionViewSection(sliderItems: viewModel.sliderItems)
+        self.sliderItem = sliderProvider
+
+        sections = [sliderProvider]
+        
+        layoutSections = [
+            SliderSectionLayoutProvider()
+        ]
+    }
+    /// NavBar
+    func configureNavBar() {
+        navigationItem.backButtonTitle = ""
+        navigationBarBehavior = HomeNavBar(navigationItem: navigationItem)
+        
+        let userName = "Hi, Mohit"
+        let subTitle = "Let's watch a movie"
+        let finalImage = Images.profilePhoto
+        navigationBarBehavior?.configure(
+            onNotification: {
+                
+            },
+            onSearch: {
+                
+            },
+            userName: userName,
+            subtitleLabel: subTitle,
+            userImage: finalImage
+        )
+    }
+    
+    /// CompositianalLayout
+    private func cofigureCompositianalLayout() {
+        
+        let layoutFactory = SectionsLayout(providers: layoutSections)
+        self.collectionView.setCollectionViewLayout(layoutFactory.createLayout(), animated: true)
+    }
+}
+// MARK: - UICollectionViewDelegate
+//
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectable = sections[indexPath.section] as? CollectionViewDelegate {
+            selectable.collectionView(collectionView, didSelectItemAt: indexPath)
+        }
+    }
+}
+// MARK: - UICollectionViewDataSource
+//
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections[section].numberOfItems
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return sections[indexPath.section].cellForItems(collectionView, cellForItemAt: indexPath)
+    }
+    // MARK: - Header And Footer
+    //
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if let provider = sections[indexPath.section] as? HeaderAndFooterProvider {
+            return provider.cellForItems(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
+        }
+        /// provider does not support headers/footers.
+        return UICollectionReusableView()
+    }
+}
