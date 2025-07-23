@@ -5,11 +5,11 @@ import Combine
 class TopSearchesCollectionViewSection: CollectionViewDataSource {
     
     // MARK: - Properties
-    let dailyEssentail: [TopSearchesItem]
-    let selectedItem: PassthroughSubject<(TopSearchesItem, Int), Never> = .init()
+    var topSearchItems: [Movie]
+    let selectedItem: PassthroughSubject<(Movie, Int), Never> = .init()
     // MARK: - Init
-    init(dailyEssentail: [TopSearchesItem]) {
-        self.dailyEssentail = dailyEssentail
+    init(topSearchItems: [Movie]) {
+        self.topSearchItems = topSearchItems
     }
     
     /// Register cell
@@ -20,17 +20,18 @@ class TopSearchesCollectionViewSection: CollectionViewDataSource {
     }
     
     var numberOfItems: Int {
-        return dailyEssentail.count
+        return topSearchItems.count
     }
     
     func cellForItems(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopSearchesCollectionViewCell.identifier, for: indexPath) as? TopSearchesCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = dailyEssentail[indexPath.item]
-        cell.imageCell.image = item.image
-        cell.nameOfCell.text = item.name
-        cell.offerCell.text = item.offer
+        let item = topSearchItems[indexPath.item]
+        
+        cell.imageCell.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
+        cell.nameOfCell.text =  item.title
+        cell.offerCell.text = item.originalLanguage
         
         return cell
     }
@@ -59,7 +60,7 @@ extension TopSearchesCollectionViewSection: HeaderAndFooterProvider {
 //
 extension TopSearchesCollectionViewSection: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dailyEssentail[indexPath.item]
+        let item = topSearchItems[indexPath.item]
         selectedItem.send((item, indexPath.row))
     }
 }

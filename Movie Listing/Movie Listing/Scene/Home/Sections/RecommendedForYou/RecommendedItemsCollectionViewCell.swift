@@ -9,7 +9,7 @@ class RecommendedItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var imageCell: UIImageView!
     @IBOutlet weak var nameOfCell: UILabel!
-    @IBOutlet weak var offerCell: UILabel!
+    @IBOutlet weak var descriptionOfCell: UILabel!
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,9 +26,11 @@ extension RecommendedItemsCollectionViewCell {
         
         nameOfCell.font = .title3
         nameOfCell.textColor = .black
+        nameOfCell.lineBreakMode = .byWordWrapping
         
-        offerCell.font = .body
-        offerCell.textColor = Colors.labelGray
+        descriptionOfCell.font = .body
+        descriptionOfCell.textColor = Colors.labelGray
+        descriptionOfCell.lineBreakMode = .byWordWrapping
         
         imageCell.contentMode = .scaleAspectFill
     }

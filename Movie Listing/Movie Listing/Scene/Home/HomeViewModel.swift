@@ -2,75 +2,34 @@ import Combine
 import UIKit
 
 class HomeViewModel {
-
-    @Published var sliderItems: [SliderItem] = [
-        .init(
-            name: "Watch Popular\nmovies 1917",
-            description: "Discover Unique Handmade Treasures for Your Journey!",
-            offer: "Watch Now",
-            image: Images.sliderImage1
-        ),
-        .init(
-            name: "Own Style, Own Story",
-            description: "Discover Unique Handmade Treasures for Your Journey!",
-            offer: "UP to 20% OFF",
-            image: Images.chain
-        ),
-        .init(
-            name: "Dress Bold, Live True",
-            description: "Discover Unique Handmade Treasures for Your Journey!",
-            offer: "UP to 30% OFF",
-            image: Images.imageOfArt
-        ),
-        .init(
-            name: "Be Unique, Be You",
-            description: "Discover Unique Handmade Treasures for Your Journey!",
-            offer: "UP to 40% OFF",
-            image: Images.jewelry
-        ),
-    ]
-
-    @Published var RecommendedItems: [RecommendedItem] = [
-        .init(
-            image: Images.homeDecore,
-            name: "The Greatest ",
-            offer: "Romance Drama"
-        ),
-        .init(
-            image: Images.art,
-            name: "The Greatest ",
-            offer: "Romance Drama"
-        ),
-        .init(
-            image: Images.craft,
-            name: "The Greatest ",
-            offer: "Romance Drama"
-        ),
-        .init(
-            image: Images.fashion,
-            name: "The Greatest ",
-            offer: "Romance Drama"
-        ),
-    ]
-
-    @Published var dailyEssentailItems: [TopSearchesItem] = [
-        .init(
-            image: Images.homeDecore,
-            name: "Bridegerton",
-            offer: "Romance Drama"
-        ),
-        .init(
-            image: Images.art,
-            name: "Bridegerton",
-            offer: "Romance Drama"),
-        .init(
-            image: Images.craft,
-            name: "Bridegerton",
-            offer: "Romance Drama"),
-        .init(
-            image: Images.fashion,
-            name: "Bridegerton",
-            offer: "Romance Drama"
-        ),
-    ]
+    // MARK: - Properties
+    @Published var movies: [Movie] = []
+    @Published var isLoading = false
+    @Published var error: Error?
+    
+    private let movieRemote: MovieRemoteProtocol
+    private var cancellables = Set<AnyCancellable>()
+    // MARK: - Init
+    init(repository: MovieRemoteProtocol = MovieRemote(network: AlamofireNetwork())) {
+         self.movieRemote = repository
+     }
+}
+// MARK: - Private Handlers
+//
+extension HomeViewModel {
+    func fetchMovies() {
+        isLoading = true
+        movieRemote.fetchTopMovies(year: 2025)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    print(error.localizedDescription)
+                    self?.error = error
+                }
+            } receiveValue: { [weak self] movies in
+                self?.movies = movies.results
+            }
+            .store(in: &cancellables)
+    }
 }

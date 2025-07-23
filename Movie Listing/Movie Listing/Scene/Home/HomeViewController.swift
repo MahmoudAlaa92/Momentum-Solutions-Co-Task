@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
         setUpCollectionView()
         cofigureCompositianalLayout()
         configureNavBar()
+        bindViewModel()
     }
     private func setUpCollectionView() {
         collectionView.delegate = self
@@ -39,17 +40,17 @@ extension HomeViewController {
     
     /// Configure Sections
     private func configureSections() {
-        let sliderProvider = SliderCollectionViewSection(sliderItems: viewModel.sliderItems)
+        let sliderProvider = SliderCollectionViewSection(sliderItems: viewModel.movies)
         self.sliderItem = sliderProvider
         
-        let recommendedItems = RecommendedItemsCollectionViewSection(dailyEssentail: viewModel.RecommendedItems)
+        let recommendedItems = RecommendedItemsCollectionViewSection(RecommendedItems: viewModel.movies)
         self.recommendedItems = recommendedItems
-        ///->
-        let TopSearchesItems = TopSearchesCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
+        
+        let TopSearchesItems = TopSearchesCollectionViewSection(topSearchItems: viewModel.movies)
         self.TopSearchesItem = TopSearchesItems
-
         
         sections = [sliderProvider ,recommendedItems ,TopSearchesItems]
+        
         layoutSections = [
             SliderSectionLayoutProvider(),
             RecommendedItemsSectionLayoutProvider(),
@@ -113,5 +114,24 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         /// provider does not support headers/footers.
         return UICollectionReusableView()
+    }
+}
+// MARK: - Binding ViewModel
+//
+extension HomeViewController {
+    private func bindViewModel() {
+        bindTopMovies()
+    }
+    func bindTopMovies() {
+        viewModel.fetchMovies()
+        viewModel.$movies
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newItems in
+                self?.recommendedItems?.RecommendedItems = newItems
+                self?.TopSearchesItem?.topSearchItems = newItems
+                self?.sliderItem?.sliderItems = newItems
+                self?.collectionView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
 }

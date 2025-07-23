@@ -5,11 +5,11 @@ import Combine
 class RecommendedItemsCollectionViewSection: CollectionViewDataSource {
     
     // MARK: - Properties
-    let dailyEssentail: [RecommendedItem]
-    let selectedItem: PassthroughSubject<(RecommendedItem, Int), Never> = .init()
+    var RecommendedItems: [Movie]
+    let selectedItem: PassthroughSubject<(Movie, Int), Never> = .init()
     // MARK: - Init
-    init(dailyEssentail: [RecommendedItem]) {
-        self.dailyEssentail = dailyEssentail
+    init(RecommendedItems: [Movie]) {
+        self.RecommendedItems = RecommendedItems
     }
     
     /// Register cell
@@ -20,17 +20,18 @@ class RecommendedItemsCollectionViewSection: CollectionViewDataSource {
     }
     
     var numberOfItems: Int {
-        return dailyEssentail.count
+        return RecommendedItems.count
     }
     
     func cellForItems(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedItemsCollectionViewCell.identifier, for: indexPath) as? RecommendedItemsCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = dailyEssentail[indexPath.item]
-        cell.imageCell.image = item.image
-        cell.nameOfCell.text = item.name
-        cell.offerCell.text = item.offer
+        let item = RecommendedItems[indexPath.item]
+
+        cell.imageCell.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
+        cell.nameOfCell.text = item.title
+        cell.descriptionOfCell.text = item.overview
         
         return cell
     }
@@ -59,7 +60,7 @@ extension RecommendedItemsCollectionViewSection: HeaderAndFooterProvider {
 //
 extension RecommendedItemsCollectionViewSection: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dailyEssentail[indexPath.item]
+        let item = RecommendedItems[indexPath.item]
         selectedItem.send((item, indexPath.row))
     }
 }
@@ -79,7 +80,7 @@ struct RecommendedItemsSectionLayoutProvider: LayoutSectionProvider {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
-        section.orthogonalScrollingBehavior = .groupPaging
+        section.orthogonalScrollingBehavior = .continuous
         section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                       heightDimension: .absolute(30)),
                                                                       elementKind: "Header",

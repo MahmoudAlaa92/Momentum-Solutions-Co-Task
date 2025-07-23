@@ -4,10 +4,10 @@ import Combine
 
 class SliderCollectionViewSection: CollectionViewDataSource {
     // MARK: - Properties
-    private let sliderItems: [SliderItem]
-    let selectedItem = PassthroughSubject<(SliderItem, Int), Never>()
+    var sliderItems: [Movie]
+    let selectedItem = PassthroughSubject<(Movie, Int), Never>()
     // MARK: - Init
-    init(sliderItems: [SliderItem]) {
+    init(sliderItems: [Movie]) {
         self.sliderItems = sliderItems
     }
     func registerCells(in collectionView: UICollectionView) {
@@ -20,10 +20,10 @@ class SliderCollectionViewSection: CollectionViewDataSource {
     func cellForItems(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderImagesCollectionViewCell.cellIdentifier, for: indexPath) as? SliderImagesCollectionViewCell else { return UICollectionViewCell() }
         let item = sliderItems[indexPath.item]
-        cell.topLabel.text = item.name
-        cell.middleLabel.text = item.description
-        cell.bottomLabel.text = item.offer
-        cell.rightImage.image = item.image
+        cell.topLabel.text = item.title
+        cell.middleLabel.text = item.releaseDate
+        cell.bottomLabel.text = "Watch Now"
+        cell.rightImage.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
         return cell
     }
 }

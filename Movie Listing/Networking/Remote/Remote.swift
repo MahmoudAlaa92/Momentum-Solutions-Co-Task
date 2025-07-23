@@ -27,29 +27,22 @@ public class Remote {
     /// - Parameters:
     ///     - request: Request that should be performed.
     ///     - decoder: Decoder entity that will be used to attempt to decode the Backend's Response.
-    ///     - completion: Closure to be executed upon completion.
     ///
     func enqueue<D: Decodable>(_ request: URLRequestConvertible,
-                               decoder: JSONDecoder = JSONDecoder(),
-                               completion: @escaping (Result<D, Error>) -> Void) {
-        network.responseData(for: request) { result in
-            switch result {
-            case let .success(data):
-                if let remoteError = RemoteErrorValidator.error(from: data) {
-                    completion(.failure(remoteError))
-                    return
+                               decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<D, Error> {
+        return network.responseDataPublisher(for: request)
+            .tryMap { result in
+                switch result {
+                case .success(let data):
+                    if let remoteError = RemoteErrorValidator.error(from: data) {
+                        throw remoteError
+                    }
+                    return try decoder.decode(D.self, from: data)
+                case .failure(let error):
+                    throw error
                 }
-
-                do {
-                    let decoded = try decoder.decode(D.self, from: data)
-                    completion(.success(decoded))
-                } catch {
-                    completion(.failure(error))
-                }
-            case let .failure(failure):
-                completion(.failure(failure))
             }
-        }
+            .eraseToAnyPublisher()
     }
 
     /// Returns a publisher that enqueues the specified Network Request on subscription and emits the result upon completion.
@@ -58,7 +51,7 @@ public class Remote {
     ///     - request: Request that should be performed.
     ///     - decoder: Decoder entity that will be used to attempt to decode the Backend's Response.
     ///
-    /// - Returns: A publisher that emits result upon completion.
+    /// - Returns: A publisher that emits result.
     func enqueue<D: Decodable>(_ request: URLRequestConvertible,
                                decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Result<D, Error>, Never> {
         network.responseDataPublisher(for: request)

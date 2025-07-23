@@ -64,9 +64,9 @@
             </constraints>
             <size key="customSize" width="267" height="196"/>
             <connections>
+                <outlet property="descriptionOfCell" destination="7Kb-MI-hKi" id="XGZ-G7-h9j"/>
                 <outlet property="imageCell" destination="Hxd-5b-PZg" id="kQl-d9-nev"/>
                 <outlet property="nameOfCell" destination="fh3-Vz-KzI" id="xZa-76-waN"/>
-                <outlet property="offerCell" destination="7Kb-MI-hKi" id="XGZ-G7-h9j"/>
                 <outlet property="topView" destination="hgd-YD-1eR" id="DeA-LM-Tny"/>
             </connections>
             <point key="canvasLocation" x="196.18320610687022" y="84.507042253521135"/>
