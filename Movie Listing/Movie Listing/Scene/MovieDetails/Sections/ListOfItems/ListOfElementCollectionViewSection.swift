@@ -6,12 +6,13 @@ class ListOfElementCollectionViewSection: CollectionViewDataSource {
     
     // MARK: - Properties
     let ListOfElements: [ListItem]
+    let movieItems: Movie
     let selectedItem: PassthroughSubject<(ListItem, Int), Never> = .init()
     // MARK: - Init
-    init(ListOfElements: [ListItem]) {
+    init(ListOfElements: [ListItem] ,movieItems: Movie) {
         self.ListOfElements = ListOfElements
+        self.movieItems = movieItems
     }
-    
     /// Register cell
     func registerCells(in collectionView: UICollectionView) {
         collectionView.register(UINib(nibName: ListOfElementsCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ListOfElementsCollectionViewCell.identifier)
@@ -33,7 +34,6 @@ class ListOfElementCollectionViewSection: CollectionViewDataSource {
         
         return cell
     }
-    
 }
 // MARK: - Header And Footer
 //
@@ -46,8 +46,12 @@ extension ListOfElementCollectionViewSection: HeaderAndFooterProvider {
                 ofKind: kind,
                 withReuseIdentifier: DescriptionMovieDetails.identifier,
                 for: indexPath) as! DescriptionMovieDetails
-            
-            footer.configure(descriptionLabel: "With Spider man mahmoud alaa eledefewfewdfjdsfndjsfhjdsfjhdsjfhjdshfjdsjfdjsfjdsjfjdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfds gsdfg gsgwe gergregre grwgrw ")
+            let description = !movieItems.overview.isEmpty ? movieItems.overview :
+"""
+This is my best film. I watched it many times. The story, acting, and action 
+scenes are amazing. I love Batman and how he saves Gotham City. 
+"""
+            footer.configure(descriptionLabel: description)
             return footer
         }
         
@@ -83,7 +87,7 @@ struct ListOfElementSectionLayoutProvider: LayoutSectionProvider {
         
         let footerItem = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .absolute(100)),
+                                               heightDimension: .absolute(70)),
             elementKind: DescriptionMovieDetails.identifier,
             alignment: .bottom)
         

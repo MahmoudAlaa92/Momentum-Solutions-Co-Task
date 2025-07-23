@@ -125,14 +125,8 @@ extension HomeViewController {
     private func bindViewModel() {
         bindTopMovies()
         bindSliderItems()
-    }
-    
-    // MARK: - Slider Items
-    private func bindSliderItems() {
-        sliderItem?.selectedItem.sink { sliderItems in
-            
-            
-        }.store(in: &subscriptions)
+        bindRecommendItems()
+        bindTopSearchItems()
     }
     func bindTopMovies() {
         viewModel.fetchMovies()
@@ -145,5 +139,23 @@ extension HomeViewController {
                 self?.collectionView.reloadData()
             }
             .store(in: &subscriptions)
+    }
+    // MARK: - Slider Items
+    private func bindSliderItems() {
+        sliderItem?.selectedItem.sink { [weak self] movieItem in
+            self?.coordinator?.goToMovieDetailsVC(movie: movieItem.0)
+        }.store(in: &subscriptions)
+    }
+    // MARK: - Recommended Items
+    private func bindRecommendItems() {
+        recommendedItems?.selectedItem.sink { [weak self] movieItem in
+            self?.coordinator?.goToMovieDetailsVC(movie: movieItem.0)
+        }.store(in: &subscriptions)
+    }
+    // MARK: - Top Search Items
+    private func bindTopSearchItems() {
+        TopSearchesItem?.selectedItem.sink { [weak self] movieItem in
+            self?.coordinator?.goToMovieDetailsVC(movie: movieItem.0)
+        }.store(in: &subscriptions)
     }
 }

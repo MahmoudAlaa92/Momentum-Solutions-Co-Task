@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class MovieDetailsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     // MARK: - Properties
-    private var viewModel = MovieDetailsView()
+    private var viewModel: MovieDetailsViewModel
     private var sections: [CollectionViewDataSource] = []
     private var layoutSections:[LayoutSectionProvider] = []
     ///
@@ -19,7 +20,17 @@ class MovieDetailsViewController: UIViewController {
     private var MultiButtons: MultiButtonsCollectionViewSection?
     private var ListOfElements: ListOfElementCollectionViewSection?
     private var CastList: CastListCollectionViewSection?
-
+    ///
+    weak var coordinator: MovieDetailsChildDelegate?
+    private var subscriptions = Set<AnyCancellable>()
+    // MARK: Init
+    init(viewModel: MovieDetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +62,16 @@ extension MovieDetailsViewController {
     /// Configure Sections
     private func configureSections() {
         
-        let movieHeader = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.movieHeaderItems)
+        let movieHeader = MovieHeaderCollectionViewSection(movieHeaderItems: viewModel.movieHeaderItems)
+        movieHeader.backButton.sink { [weak self] in
+            self?.coordinator?.backToHomeVC()
+        }.store(in: &subscriptions)
         self.MovieHeader = movieHeader
         
-        let MultiButtons = MultiButtonsCollectionViewSection(MultiButtons: viewModel.multiButtonsItems)
+        let MultiButtons = MultiButtonsCollectionViewSection(MultiButtons: viewModel.multiButtonsItems, movieItems: viewModel.movieHeaderItems)
         self.MultiButtons = MultiButtons
         
-        let ListOfElements = ListOfElementCollectionViewSection(ListOfElements: viewModel.ListOfElements)
+        let ListOfElements = ListOfElementCollectionViewSection(ListOfElements: viewModel.ListOfElements ,movieItems: viewModel.movieHeaderItems )
         self.ListOfElements = ListOfElements
         
         let CastList = CastListCollectionViewSection(CastListItems: viewModel.CastList)

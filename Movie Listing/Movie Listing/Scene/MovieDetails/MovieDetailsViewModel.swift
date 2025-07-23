@@ -1,9 +1,11 @@
 import UIKit
 
-class MovieDetailsView {
-    @Published var movieHeaderItems: [MovieDetailsModel] = [
-        .init(image: Images.homeDecore, name: "Bridegerton")
-    ]
+class MovieDetailsViewModel {
+    var movieHeaderItems: Movie
+    
+    init(movieHeaderItems: Movie) {
+        self.movieHeaderItems = movieHeaderItems
+    }
     
     @Published var multiButtonsItems: [MultiButtonsItem] = [
         .init(
@@ -19,15 +21,15 @@ class MovieDetailsView {
     
     @Published var ListOfElements: [ListItem] = [
         .init(
-            name: "Bridegerton",
-            value: "Romance Drama"
+            name: "Length",
+            value: "2h 28min"
         ),
         .init(
-            name: "Bridegerton",
-            value: "Romance Drama"),
+            name: "Language",
+            value: "English"),
         .init(
-            name: "Bridegerton",
-            value: "Romance Drama"),
+            name: "Rating",
+            value: "PG - 13"),
         .init(
             name: "Bridegerton",
             value: "Romance Drama"

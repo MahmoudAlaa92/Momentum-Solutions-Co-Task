@@ -40,7 +40,6 @@ class CastListCollectionViewSection: CollectionViewDataSource {
         return cell
     }
 }
-
 // MARK: - Header And Foter for category
 //
 extension CastListCollectionViewSection: HeaderAndFooterProvider {
@@ -53,7 +52,7 @@ extension CastListCollectionViewSection: HeaderAndFooterProvider {
                 withReuseIdentifier: HeaderView.headerIdentifier,
                 for: indexPath) as! HeaderView
             
-            header.configure(title: "Cast ", description: "", shouldShowButton: false)
+            header.configure(title: "Cast ", description: "", shouldShowButton: true)
             return header
         }
         

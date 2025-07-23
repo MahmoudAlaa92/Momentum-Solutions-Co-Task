@@ -8,9 +8,10 @@
 import UIKit
 
 class MovieHeaderCollectionViewCell: UICollectionViewCell {
-
+    
     // MARK: - Properties
     static let identifier: String = "MovieHeaderCollectionViewCell"
+    var onPressedBtn: (() -> Void)?
     // MARK: - Outlets
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var buttonImage: UIButton!
@@ -38,5 +39,14 @@ extension MovieHeaderCollectionViewCell {
         imageCell.layer.masksToBounds = true
         
         buttonImage.setImage(Images.cartSelected, for: .normal)
+        
+        backButton.setImage(Images.iconProfileArrow, for: .normal)
+    }
+}
+// MARK: - Actions
+//
+extension MovieHeaderCollectionViewCell {
+    @IBAction func backButtonPressed(_ sender: Any) {
+        onPressedBtn?()
     }
 }

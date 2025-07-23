@@ -11,11 +11,11 @@ import Combine
 class MovieHeaderCollectionViewSection: CollectionViewDataSource {
     
     // MARK: - Properties
-    let dailyEssentail: [MovieDetailsModel]
-    let selectedItem: PassthroughSubject<(MovieDetailsModel, Int), Never> = .init()
+    let movieHeaderItems: Movie
+    let backButton = PassthroughSubject<Void, Never>()
     // MARK: - Init
-    init(dailyEssentail: [MovieDetailsModel]) {
-        self.dailyEssentail = dailyEssentail
+    init(movieHeaderItems: Movie) {
+        self.movieHeaderItems = movieHeaderItems
     }
     
     /// Register cell
@@ -24,27 +24,28 @@ class MovieHeaderCollectionViewSection: CollectionViewDataSource {
     }
     
     var numberOfItems: Int {
-        return dailyEssentail.count
+        return 1
     }
     
     func cellForItems(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieHeaderCollectionViewCell.identifier, for: indexPath) as? MovieHeaderCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = dailyEssentail[indexPath.item]
-        cell.imageCell.image = item.image
-        cell.nameOfCell.text = item.name
+        let item = movieHeaderItems
         
+        cell.imageCell.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
+        cell.nameOfCell.text =  item.title
+        cell.onPressedBtn = { [weak self] in
+            self?.backButton.send()
+        }
         return cell
     }
 }
-
 // MARK: - Delegate
 //
 extension MovieHeaderCollectionViewSection: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dailyEssentail[indexPath.item]
-        selectedItem.send((item, indexPath.row))
+        /// Selected items here
     }
 }
 // MARK: - Layout

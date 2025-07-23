@@ -45,8 +45,11 @@ extension HeaderMultiButtonsView {
         descriptionLabel.textColor = .black
 
         rateLabel.font = .body
-        starIcon.image = Images.iconRating
         rateLabel.textColor = Colors.labelGray
+        
+        starIcon.image = Images.iconRating
+        
+        saveButton.setImage(Images.iconCommunity, for: .normal)
     }
 }
 // MARK: - Actions

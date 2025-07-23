@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeTranisitionDelegate: AnyObject {
-    func goToMovieDetailsVC()
+    func goToMovieDetailsVC(movie: Movie)
 }
 
 protocol HomeChildDelegate: AnyObject {
@@ -37,7 +37,11 @@ class HomeCoordinator: NSObject, Coordinator {
 // MARK: - Home Transition Delegate
 //
 extension HomeCoordinator: HomeTranisitionDelegate {
-    func goToMovieDetailsVC() {
+    func goToMovieDetailsVC(movie: Movie) {
+        let coordinator = MovieDetailsCoordinator(navigationController: navigationController, movieItems: movie)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
         
     }
 }

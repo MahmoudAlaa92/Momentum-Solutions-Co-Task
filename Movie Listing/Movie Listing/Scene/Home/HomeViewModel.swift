@@ -24,7 +24,6 @@ extension HomeViewModel {
             .sink { [weak self] completion in
                 self?.isLoading = false
                 if case .failure(let error) = completion {
-                    print(error.localizedDescription)
                     self?.error = error
                 }
             } receiveValue: { [weak self] movies in

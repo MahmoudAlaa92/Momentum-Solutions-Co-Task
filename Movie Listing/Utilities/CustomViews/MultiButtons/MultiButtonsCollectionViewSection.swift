@@ -12,10 +12,12 @@ class MultiButtonsCollectionViewSection: CollectionViewDataSource {
     
     // MARK: - Properties
     let MultiButtons: [MultiButtonsItem]
+    let movieItems: Movie
     let selectedItem: PassthroughSubject<(MultiButtonsItem, Int), Never> = .init()
     // MARK: - Init
-    init(MultiButtons: [MultiButtonsItem]) {
+    init(MultiButtons: [MultiButtonsItem] ,movieItems: Movie) {
         self.MultiButtons = MultiButtons
+        self.movieItems = movieItems
     }
     
     /// Register cell
@@ -51,7 +53,7 @@ extension MultiButtonsCollectionViewSection: HeaderAndFooterProvider {
                 withReuseIdentifier: HeaderMultiButtonsView.headerIdentifier,
                 for: indexPath) as! HeaderMultiButtonsView
             
-            header.configure(title: "SpiderMan: No Way ", description: "Home", rate: "9.1/10 IMDB", shouldShowButton: true)
+            header.configure(title: movieItems.title, description: "Home", rate: "\(movieItems.voteAverage) IMDB", shouldShowButton: true)
             return header
         }
         return UICollectionReusableView()

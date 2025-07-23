@@ -51,7 +51,10 @@
                                             <constraint firstAttribute="height" constant="38.333333333333336" id="plE-8e-nCO"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="icon-profile-arrow"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="5ni-sy-08y"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqk-0u-9Vz">
                                         <rect key="frame" x="167" y="0.0" width="75" height="38.333333333333336"/>
@@ -104,8 +107,8 @@
     </objects>
     <resources>
         <image name="Cart Selected" width="50" height="50"/>
-        <image name="back" width="128" height="128"/>
-        <image name="icon-back" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="icon-back" width="50" height="50"/>
+        <image name="icon-profile-arrow" width="40" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
