@@ -34,7 +34,7 @@ class MovieHeaderCollectionViewSection: CollectionViewDataSource {
         let item = movieHeaderItems
         
         cell.imageCell.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
-        cell.nameOfCell.text =  item.title
+        cell.nameOfCell.text =  "Player Trailer"
         cell.onPressedBtn = { [weak self] in
             self?.backButton.send()
         }

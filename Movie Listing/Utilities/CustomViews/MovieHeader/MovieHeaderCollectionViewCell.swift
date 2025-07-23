@@ -31,7 +31,7 @@ extension MovieHeaderCollectionViewCell {
     private func configure() {
         topView.backgroundColor = Colors.heavyGray
         
-        nameOfCell.font = .title2
+        nameOfCell.font = .title1
         nameOfCell.textColor = Colors.buttonGray
         
         imageCell.contentMode = .scaleToFill
