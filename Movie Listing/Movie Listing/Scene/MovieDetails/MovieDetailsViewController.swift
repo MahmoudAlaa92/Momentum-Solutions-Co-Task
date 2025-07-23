@@ -15,7 +15,8 @@ class MovieDetailsViewController: UIViewController {
     private var sections: [CollectionViewDataSource] = []
     private var layoutSections:[LayoutSectionProvider] = []
     ///
-    private var dailyEssentialItem: MovieHeaderCollectionViewSection?
+    private var MovieHeader: MovieHeaderCollectionViewSection?
+    private var MultiButtons: MultiButtonsCollectionViewSection?
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,16 @@ extension MovieDetailsViewController {
     /// Configure Sections
     private func configureSections() {
         
-        let dailyEssentials = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
-        self.dailyEssentialItem = dailyEssentials
+        let dailyEssentials = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.movieHeaderItems)
+        self.MovieHeader = dailyEssentials
         
-        sections = [dailyEssentials]
+        let MultiButtons = MultiButtonsCollectionViewSection(MultiButtons: viewModel.dailyEssentailItems)
+        self.MultiButtons = MultiButtons
+        
+        sections = [dailyEssentials, MultiButtons]
         layoutSections = [
-            DailyEssentailSectionLayoutProvider()
+            MovieHeaderSectionLayoutProvider(),
+            MultiButtonsSectionLayoutProvider()
         ]
     }
     /// CompositianalLayout

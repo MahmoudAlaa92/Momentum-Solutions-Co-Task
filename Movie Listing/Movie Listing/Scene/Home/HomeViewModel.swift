@@ -1,4 +1,3 @@
-
 import Combine
 import UIKit
 
@@ -53,11 +52,25 @@ class HomeViewModel {
             offer: "Romance Drama"
         ),
     ]
-    
+
     @Published var dailyEssentailItems: [TopSearchesItem] = [
-        .init(image: Images.homeDecore, name: "Bridegerton", offer: "Romance Drama"),
-        .init(image: Images.art, name: "Bridegerton", offer: "Romance Drama"),
-        .init(image: Images.craft, name: "Bridegerton", offer: "Romance Drama"),
-        .init(image: Images.fashion, name: "Bridegerton", offer: "Romance Drama")
+        .init(
+            image: Images.homeDecore,
+            name: "Bridegerton",
+            offer: "Romance Drama"
+        ),
+        .init(
+            image: Images.art,
+            name: "Bridegerton",
+            offer: "Romance Drama"),
+        .init(
+            image: Images.craft,
+            name: "Bridegerton",
+            offer: "Romance Drama"),
+        .init(
+            image: Images.fashion,
+            name: "Bridegerton",
+            offer: "Romance Drama"
+        ),
     ]
 }

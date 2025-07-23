@@ -49,7 +49,7 @@ extension MovieHeaderCollectionViewSection: CollectionViewDelegate {
 }
 // MARK: - Layout
 //
-struct DailyEssentailSectionLayoutProvider: LayoutSectionProvider {
+struct MovieHeaderSectionLayoutProvider: LayoutSectionProvider {
     
     func layoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
