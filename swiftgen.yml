@@ -10,14 +10,14 @@ xcassets:
          forceFileNameEnum: true
        output: Movie Listing/Resources/SwiftGen/Colors/Generated-Colors.swift
 # Generate Images
-#   inputs:
-#       - Movie Listing/Resources/SwiftGen/Images/Images.xcassets
-#   outputs:
-#       templatePath: Movie Listing/Resources/SwiftGen/Images/images.stencil
-#       params:
-#         forceProvidesNamespaces: true
-#         forceFileNameEnum: true
-#       output: Movie Listing/Resources/SwiftGen/Images/Generated-Images.swift
+   inputs:
+       - Movie Listing/Resources/SwiftGen/Images/Images.xcassets
+   outputs:
+       templatePath: Movie Listing/Resources/SwiftGen/Images/images.stencil
+       params:
+         forceProvidesNamespaces: true
+         forceFileNameEnum: true
+       output: Movie Listing/Resources/SwiftGen/Images/Generated-Images.swift
 
 ## Generate Strings
 #strings:
