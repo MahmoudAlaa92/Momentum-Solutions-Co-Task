@@ -20,7 +20,7 @@ class MultiButtonsCollectionViewSection: CollectionViewDataSource {
     
     /// Register cell
     func registerCells(in collectionView: UICollectionView) {
-        collectionView.register(UINib(nibName: DailyEssentailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: DailyEssentailCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: MultiButtonsCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MultiButtonsCollectionViewCell.identifier)
         
         collectionView.register(UINib(nibName: HeaderMultiButtonsView.headerIdentifier, bundle: nil), forSupplementaryViewOfKind: HeaderMultiButtonsView.headerIdentifier, withReuseIdentifier: HeaderMultiButtonsView.headerIdentifier)
     }
@@ -30,7 +30,7 @@ class MultiButtonsCollectionViewSection: CollectionViewDataSource {
     }
     
     func cellForItems(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyEssentailCollectionViewCell.identifier, for: indexPath) as? DailyEssentailCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MultiButtonsCollectionViewCell.identifier, for: indexPath) as? MultiButtonsCollectionViewCell else {
             return UICollectionViewCell()
         }
         let item = MultiButtons[indexPath.item]
@@ -83,7 +83,7 @@ struct MultiButtonsSectionLayoutProvider: LayoutSectionProvider {
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                      heightDimension: .absolute(60)),
+                                                                      heightDimension: .absolute(70)),
                                                                       elementKind: HeaderMultiButtonsView.headerIdentifier,
                                                                       alignment: .top) ]
         return section

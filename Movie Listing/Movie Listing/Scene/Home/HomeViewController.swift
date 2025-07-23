@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     private var sliderItem: SliderCollectionViewSection?
     private var recommendedItems: RecommendedItemsCollectionViewSection?
-    private var dailyEssentialItem: TopSearchesCollectionViewSection?
+    private var TopSearchesItem: TopSearchesCollectionViewSection?
     ///
     private var subscriptions = Set<AnyCancellable>()
     // MARK: - Lifecycle
@@ -44,12 +44,12 @@ extension HomeViewController {
         
         let recommendedItems = RecommendedItemsCollectionViewSection(dailyEssentail: viewModel.RecommendedItems)
         self.recommendedItems = recommendedItems
-        
-        let dailyEssentials = TopSearchesCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
-        self.dailyEssentialItem = dailyEssentials
+        ///->
+        let TopSearchesItems = TopSearchesCollectionViewSection(dailyEssentail: viewModel.dailyEssentailItems)
+        self.TopSearchesItem = TopSearchesItems
 
         
-        sections = [sliderProvider ,recommendedItems ,dailyEssentials]
+        sections = [sliderProvider ,recommendedItems ,TopSearchesItems]
         layoutSections = [
             SliderSectionLayoutProvider(),
             RecommendedItemsSectionLayoutProvider(),

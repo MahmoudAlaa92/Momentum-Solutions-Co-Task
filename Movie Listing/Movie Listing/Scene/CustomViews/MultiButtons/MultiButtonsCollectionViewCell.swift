@@ -7,14 +7,13 @@
 
 import UIKit
 
-class DailyEssentailCollectionViewCell: UICollectionViewCell {
+class MultiButtonsCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
-    static let identifier: String = "DailyEssentailCollectionViewCell"
+    static let identifier: String = "MultiButtonsCollectionViewCell"
     // MARK: - Outlets
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var nameOfCell: UILabel!
     // MARK: - Lifecycle
-    //
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
@@ -22,7 +21,7 @@ class DailyEssentailCollectionViewCell: UICollectionViewCell {
 }
 // MARK: - Configure
 //
-extension DailyEssentailCollectionViewCell {
+extension MultiButtonsCollectionViewCell {
     
     private func configure() {
         topView.backgroundColor = Colors.heavyGray

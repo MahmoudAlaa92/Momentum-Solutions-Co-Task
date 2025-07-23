@@ -17,6 +17,9 @@ class MovieDetailsViewController: UIViewController {
     ///
     private var MovieHeader: MovieHeaderCollectionViewSection?
     private var MultiButtons: MultiButtonsCollectionViewSection?
+    private var ListOfElements: ListOfElementCollectionViewSection?
+    private var CastList: CastListCollectionViewSection?
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +51,24 @@ extension MovieDetailsViewController {
     /// Configure Sections
     private func configureSections() {
         
-        let dailyEssentials = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.movieHeaderItems)
-        self.MovieHeader = dailyEssentials
+        let movieHeader = MovieHeaderCollectionViewSection(dailyEssentail: viewModel.movieHeaderItems)
+        self.MovieHeader = movieHeader
         
-        let MultiButtons = MultiButtonsCollectionViewSection(MultiButtons: viewModel.dailyEssentailItems)
+        let MultiButtons = MultiButtonsCollectionViewSection(MultiButtons: viewModel.multiButtonsItems)
         self.MultiButtons = MultiButtons
         
-        sections = [dailyEssentials, MultiButtons]
+        let ListOfElements = ListOfElementCollectionViewSection(ListOfElements: viewModel.ListOfElements)
+        self.ListOfElements = ListOfElements
+        
+        let CastList = CastListCollectionViewSection(CastListItems: viewModel.CastList)
+        self.CastList = CastList
+        
+        sections = [movieHeader ,MultiButtons ,ListOfElements ,CastList]
         layoutSections = [
             MovieHeaderSectionLayoutProvider(),
-            MultiButtonsSectionLayoutProvider()
+            MultiButtonsSectionLayoutProvider(),
+            ListOfElementSectionLayoutProvider(),
+            CastListSectionLayoutProvider()
         ]
     }
     /// CompositianalLayout

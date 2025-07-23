@@ -4,6 +4,7 @@ class HeaderMultiButtonsView: UICollectionReusableView {
     // MARK: - Properties
     static let headerIdentifier = "HeaderMultiButtonsView"
     // MARK: - Outlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
@@ -36,6 +37,7 @@ extension HeaderMultiButtonsView {
     }
 
     private func setUp() {
+        
         titleLabel.font = .title3
         titleLabel.textColor = Colors.hPrimary
 

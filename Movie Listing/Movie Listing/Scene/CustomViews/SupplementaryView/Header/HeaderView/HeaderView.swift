@@ -28,7 +28,7 @@ extension HeaderView {
         titleLabel.textColor = titleColor
         descriptionLabel.text = description
         seeAll.isHidden = !shouldShowButton
-        seeAll.applyStyle(.labelButton, title: "See All")
+        seeAll.applyStyle(.labelButton, title: "See More")
     }
     
     private func setUp() {
