@@ -25,7 +25,7 @@ struct MovieDBRequest: URLRequestConvertible {
         }
         
         var parameters: [String: Any] {
-            var params: [String: Any] = ["api_key": Settings.apiKey]
+            var params: [String: Any] = ["api_key": Secrets.tmdbAPIKey]
             
             switch self {
             case .discoverMovies(let year, let sortBy):
