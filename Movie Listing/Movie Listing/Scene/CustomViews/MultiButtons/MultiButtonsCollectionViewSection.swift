@@ -74,18 +74,24 @@ struct MultiButtonsSectionLayoutProvider: LayoutSectionProvider {
                                               heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(100),
-                                               heightDimension: .absolute(60))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(90),
+                                               heightDimension: .absolute(50))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 0)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                      heightDimension: .absolute(70)),
-                                                                      elementKind: HeaderMultiButtonsView.headerIdentifier,
-                                                                      alignment: .top) ]
+        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
+        
+        let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(70)),
+            elementKind: HeaderMultiButtonsView.headerIdentifier,
+            alignment: .top)
+        
+        section.boundarySupplementaryItems = [headerItem]
         return section
     }
     

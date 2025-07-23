@@ -25,13 +25,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBe-S9-26j">
-                    <rect key="frame" x="68.333333333333329" y="0.0" width="232.66666666666669" height="102"/>
+                    <rect key="frame" x="44.333333333333343" y="0.0" width="256.66666666666663" height="102"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMh-ba-xlb">
-                    <rect key="frame" x="24.000000000000004" y="0.0" width="41.333333333333343" height="102"/>
+                    <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="102"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 <constraint firstAttribute="bottom" secondItem="PMh-ba-xlb" secondAttribute="bottom" id="4TW-Yg-7zd"/>
                 <constraint firstItem="MVP-WX-F3X" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="5fp-Ob-njY"/>
                 <constraint firstItem="IBe-S9-26j" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="9Cs-BC-whm"/>
-                <constraint firstItem="PMh-ba-xlb" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="24" id="KyH-T8-TvI"/>
+                <constraint firstItem="PMh-ba-xlb" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="KyH-T8-TvI"/>
                 <constraint firstItem="IBe-S9-26j" firstAttribute="leading" secondItem="PMh-ba-xlb" secondAttribute="trailing" constant="3" id="PGd-f2-hnq"/>
                 <constraint firstAttribute="bottom" secondItem="MVP-WX-F3X" secondAttribute="bottom" id="oVm-FT-pOY"/>
                 <constraint firstAttribute="bottom" secondItem="IBe-S9-26j" secondAttribute="bottom" id="roY-de-MlS"/>

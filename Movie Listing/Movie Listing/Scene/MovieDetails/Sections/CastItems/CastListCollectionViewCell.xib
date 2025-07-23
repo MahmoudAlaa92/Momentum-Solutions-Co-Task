@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-YD-1eR" userLabel="Content View">
-                        <rect key="frame" x="24" y="0.0" width="239" height="196"/>
+                        <rect key="frame" x="0.0" y="0.0" width="267" height="196"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hxd-5b-PZg">
-                                <rect key="frame" x="0.0" y="0.0" width="239" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="267" height="147"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh3-Vz-KzI">
-                                <rect key="frame" x="0.0" y="147" width="239" height="49"/>
+                                <rect key="frame" x="0.0" y="147" width="267" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,9 +47,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="hgd-YD-1eR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MVg-27-wAC"/>
-                <constraint firstAttribute="trailing" secondItem="hgd-YD-1eR" secondAttribute="trailing" constant="4" id="O6G-yB-U30"/>
+                <constraint firstAttribute="trailing" secondItem="hgd-YD-1eR" secondAttribute="trailing" id="O6G-yB-U30"/>
                 <constraint firstAttribute="bottom" secondItem="hgd-YD-1eR" secondAttribute="bottom" id="asL-9k-Tdt"/>
-                <constraint firstItem="hgd-YD-1eR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="gmZ-5o-1E8"/>
+                <constraint firstItem="hgd-YD-1eR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gmZ-5o-1E8"/>
             </constraints>
             <size key="customSize" width="267" height="196"/>
             <connections>

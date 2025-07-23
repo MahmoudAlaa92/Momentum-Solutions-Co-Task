@@ -34,6 +34,8 @@ extension MovieHeaderCollectionViewCell {
         nameOfCell.textColor = Colors.buttonGray
         
         imageCell.contentMode = .scaleToFill
+        imageCell.layer.cornerRadius = 18
+        imageCell.layer.masksToBounds = true
         
         buttonImage.setImage(Images.cartSelected, for: .normal)
     }

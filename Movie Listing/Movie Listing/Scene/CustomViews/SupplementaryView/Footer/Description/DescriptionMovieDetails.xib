@@ -14,10 +14,10 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="l2R-mF-s9P">
-                    <rect key="frame" x="24" y="0.0" width="262" height="77"/>
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="77"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ls-CG-95o">
-                            <rect key="frame" x="0.0" y="0.0" width="262" height="20"/>
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="P4I-2w-fCy"/>
                             </constraints>
@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mf-4d-m1z">
-                            <rect key="frame" x="0.0" y="20" width="262" height="57"/>
+                            <rect key="frame" x="0.0" y="20" width="310" height="57"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -38,8 +38,8 @@
             <constraints>
                 <constraint firstItem="l2R-mF-s9P" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="5T2-nd-B80"/>
                 <constraint firstAttribute="bottom" secondItem="l2R-mF-s9P" secondAttribute="bottom" id="BH9-y9-EVF"/>
-                <constraint firstItem="l2R-mF-s9P" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="24" id="dEi-2u-nYW"/>
-                <constraint firstAttribute="trailing" secondItem="l2R-mF-s9P" secondAttribute="trailing" constant="24" id="iSY-uU-wLF"/>
+                <constraint firstItem="l2R-mF-s9P" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="dEi-2u-nYW"/>
+                <constraint firstAttribute="trailing" secondItem="l2R-mF-s9P" secondAttribute="trailing" id="iSY-uU-wLF"/>
             </constraints>
             <connections>
                 <outlet property="descriptionLabel" destination="4Mf-4d-m1z" id="PrF-0h-aQ8"/>

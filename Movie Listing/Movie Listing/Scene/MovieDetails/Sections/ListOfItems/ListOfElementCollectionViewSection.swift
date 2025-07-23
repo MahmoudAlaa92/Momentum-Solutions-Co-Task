@@ -74,15 +74,20 @@ struct ListOfElementSectionLayoutProvider: LayoutSectionProvider {
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(88),
                                                heightDimension: .absolute(60))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 20)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuous
-        section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                      heightDimension: .absolute(100)),
-                                                    elementKind: DescriptionMovieDetails.identifier,
-                                                    alignment: .bottom) ]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
+        
+        let footerItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(100)),
+            elementKind: DescriptionMovieDetails.identifier,
+            alignment: .bottom)
+        
+        section.boundarySupplementaryItems = [footerItem]
         return section
     }
 }
