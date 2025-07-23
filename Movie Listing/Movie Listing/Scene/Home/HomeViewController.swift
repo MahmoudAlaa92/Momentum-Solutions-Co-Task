@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     private var recommendedItems: RecommendedItemsCollectionViewSection?
     private var TopSearchesItem: TopSearchesCollectionViewSection?
     ///
+    weak var coordinator: HomeTranisitionDelegate?
     private var subscriptions = Set<AnyCancellable>()
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -105,8 +106,10 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return sections[indexPath.section].cellForItems(collectionView, cellForItemAt: indexPath)
     }
-    // MARK: - Header And Footer
-    //
+}
+// MARK: - Header And Footer
+//
+extension HomeViewController {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if let provider = sections[indexPath.section] as? HeaderAndFooterProvider {
@@ -121,6 +124,15 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController {
     private func bindViewModel() {
         bindTopMovies()
+        bindSliderItems()
+    }
+    
+    // MARK: - Slider Items
+    private func bindSliderItems() {
+        sliderItem?.selectedItem.sink { sliderItems in
+            
+            
+        }.store(in: &subscriptions)
     }
     func bindTopMovies() {
         viewModel.fetchMovies()
