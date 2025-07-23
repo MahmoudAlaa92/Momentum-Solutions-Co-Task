@@ -7,7 +7,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     // MARK: - Properties
     private var navigationBarBehavior: HomeNavBar?
-    private var viewModel = HomeViewModel()
+    private var viewModel: HomeViewModel
     private var sections: [CollectionViewDataSource] = []
     private var layoutSections:[LayoutSectionProvider] = []
     
@@ -17,6 +17,14 @@ class HomeViewController: UIViewController {
     ///
     weak var coordinator: HomeTranisitionDelegate?
     private var subscriptions = Set<AnyCancellable>()
+    // MARK: - Init
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

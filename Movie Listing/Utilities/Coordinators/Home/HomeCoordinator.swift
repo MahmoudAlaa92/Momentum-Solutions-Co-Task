@@ -29,9 +29,10 @@ class HomeCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let homeVC = HomeViewController()
+        let viewModel = HomeViewModel()
+        let homeVC = HomeViewController(viewModel: viewModel)
         homeVC.coordinator = self
-        navigationController.pushViewController(homeVC, animated: true)
+        navigationController.transition(to: homeVC, with: .push)
     }
 }
 // MARK: - Home Transition Delegate
