@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		158671EA2E30F57A00790873 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 158671E92E30F57A00790873 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		156503A82E2F5DEB007CD4EA /* Movie Listing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Listing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -26,17 +30,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		151EF1BF2E2F904C00AB8470 /* Extension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		156503AA2E2F5DEB007CD4EA /* Movie Listing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				156503BA2E2F5DED007CD4EA /* Exceptions for "Movie Listing" folder in "Movie Listing" target */,
 			);
 			path = "Movie Listing";
+			sourceTree = "<group>";
+		};
+		158671C52E30F37C00790873 /* Utilities */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		158671CE2E30F3D700790873 /* Networking */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -46,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158671EA2E30F57A00790873 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +65,8 @@
 		1565039F2E2F5DEB007CD4EA = {
 			isa = PBXGroup;
 			children = (
-				151EF1BF2E2F904C00AB8470 /* Extension */,
+				158671CE2E30F3D700790873 /* Networking */,
+				158671C52E30F37C00790873 /* Utilities */,
 				156503AA2E2F5DEB007CD4EA /* Movie Listing */,
 				151EF1812E2F745B00AB8470 /* Resources */,
 				156503A92E2F5DEB007CD4EA /* Products */,
@@ -87,11 +98,13 @@
 			);
 			fileSystemSynchronizedGroups = (
 				151EF1812E2F745B00AB8470 /* Resources */,
-				151EF1BF2E2F904C00AB8470 /* Extension */,
 				156503AA2E2F5DEB007CD4EA /* Movie Listing */,
+				158671C52E30F37C00790873 /* Utilities */,
+				158671CE2E30F3D700790873 /* Networking */,
 			);
 			name = "Movie Listing";
 			packageProductDependencies = (
+				158671E92E30F57A00790873 /* Alamofire */,
 			);
 			productName = "Movie Listing";
 			productReference = 156503A82E2F5DEB007CD4EA /* Movie Listing.app */;
@@ -121,6 +134,9 @@
 			);
 			mainGroup = 1565039F2E2F5DEB007CD4EA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				158671E82E30F57A00790873 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 156503A92E2F5DEB007CD4EA /* Products */;
 			projectDirPath = "";
@@ -345,6 +361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		158671E82E30F57A00790873 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		158671E92E30F57A00790873 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 158671E82E30F57A00790873 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 156503A02E2F5DEB007CD4EA /* Project object */;
 }
