@@ -1,9 +1,3 @@
-//
-//  AppCoordinator.swift
-//  Herfety
-//
-//  Created by Mahmoud Alaa on 01/07/2025.
-//
 
 import UIKit
 

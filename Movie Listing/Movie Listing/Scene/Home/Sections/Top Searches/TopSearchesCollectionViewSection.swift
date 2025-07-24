@@ -16,7 +16,7 @@ class TopSearchesCollectionViewSection: CollectionViewDataSource {
     func registerCells(in collectionView: UICollectionView) {
         collectionView.register(UINib(nibName: TopSearchesCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: TopSearchesCollectionViewCell.identifier)
         
-        collectionView.register(UINib(nibName: HeaderView.headerIdentifier, bundle: nil), forSupplementaryViewOfKind: "Header", withReuseIdentifier: HeaderView.headerIdentifier)
+        collectionView.register(UINib(nibName: HeaderView.headerIdentifier, bundle: nil), forSupplementaryViewOfKind: HeaderView.headerIdentifier, withReuseIdentifier: HeaderView.headerIdentifier)
     }
     
     var numberOfItems: Int {
@@ -43,7 +43,7 @@ extension TopSearchesCollectionViewSection: HeaderAndFooterProvider {
     
     func cellForItems(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == "Header" {
+        if kind == HeaderView.headerIdentifier {
             let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: HeaderView.headerIdentifier,
@@ -82,7 +82,7 @@ struct TopSearchesSectionLayoutProvider: LayoutSectionProvider {
         section.interGroupSpacing = 5
         section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                       heightDimension: .absolute(30)),
-                                                                      elementKind: "Header",
+                                                                      elementKind: HeaderView.headerIdentifier,
                                                                       alignment: .top) ]
         return section
     }

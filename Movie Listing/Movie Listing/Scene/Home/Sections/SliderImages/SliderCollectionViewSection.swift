@@ -12,7 +12,7 @@ class SliderCollectionViewSection: CollectionViewDataSource {
     }
     func registerCells(in collectionView: UICollectionView) {
         /// Cell
-        collectionView.register(UINib(nibName: "SliderImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: SliderImagesCollectionViewCell.cellIdentifier)
+        collectionView.register(UINib(nibName: SliderImagesCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: SliderImagesCollectionViewCell.cellIdentifier)
     }
     var numberOfItems: Int {
         return sliderItems.count

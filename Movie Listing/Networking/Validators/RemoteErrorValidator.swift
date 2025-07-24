@@ -1,7 +1,7 @@
 
 import Foundation
 
-/// Herfetty.com Response Validator
+/// Movie.com Response Validator
 ///
 enum RemoteErrorValidator {
 
