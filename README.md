@@ -86,5 +86,9 @@ Installed via [Swift Package Manager (SPM)] — No CocoaPods used.
 
 <img width="410" height="800" alt="Screenshot 2025-07-23 at 8 02 31 PM" src="https://github.com/user-attachments/assets/52396d13-9fe5-4786-9847-ef45f56c59da" />
 
-<img width="410" height="800" alt="Screenshot 2025-07-23 at 8 02 15 PM" src="https://github.com/user-attachments/assets/e4d3624a-e2e2-4408-afb8-5f85c753388e" />
+<img width="410" height="800" alt="Screenshot 2025-07-23 at 9 06 22 PM" src="https://github.com/user-attachments/assets/ed4b67dd-586e-447e-8f36-0e25e79df22a" />
+
+
+https://github.com/user-attachments/assets/cd28c650-8281-4f85-81f5-929a855725d3
+
 
