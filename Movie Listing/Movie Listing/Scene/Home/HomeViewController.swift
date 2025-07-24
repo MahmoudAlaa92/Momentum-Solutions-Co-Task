@@ -9,7 +9,6 @@ class HomeViewController: UIViewController {
     private var navigationBarBehavior: HomeNavBar?
     private var viewModel: HomeViewModel
     private var sections: [CollectionViewDataSource] = []
-    private var layoutSections:[LayoutSectionProvider] = []
     
     private var sliderItem: SliderCollectionViewSection?
     private var recommendedItems: RecommendedItemsCollectionViewSection?
@@ -28,10 +27,9 @@ class HomeViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCollectionView()
         configureSections()
-        setUpCollectionView()
         cofigureCompositianalLayout()
+        setUpCollectionView()
         configureNavBar()
         bindViewModel()
     }
@@ -59,12 +57,6 @@ extension HomeViewController {
         self.TopSearchesItem = TopSearchesItems
         
         sections = [sliderProvider ,recommendedItems ,TopSearchesItems]
-        
-        layoutSections = [
-            SliderSectionLayoutProvider(),
-            RecommendedItemsSectionLayoutProvider(),
-            TopSearchesSectionLayoutProvider()
-        ]
     }
     /// NavBar
     func configureNavBar() {
@@ -84,11 +76,13 @@ extension HomeViewController {
             userImage: finalImage
         )
     }
-    
     /// CompositianalLayout
     private func cofigureCompositianalLayout() {
-        
-        let layoutFactory = SectionsLayout(providers: layoutSections)
+        let layoutFactory = SectionsLayout(providers: [
+            SliderSectionLayoutProvider(),
+            RecommendedItemsSectionLayoutProvider(),
+            TopSearchesSectionLayoutProvider()
+        ])
         self.collectionView.setCollectionViewLayout(layoutFactory.createLayout(), animated: true)
     }
 }

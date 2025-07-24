@@ -34,7 +34,6 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCollectionView()
         configureSections()
         setUpCollectionView()
         cofigureCompositianalLayout()
