@@ -20,9 +20,9 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setUP()
     }
+    
     // MARK: - Configure
     private func setUP() {
-        backGroundView.backgroundColor = Colors.primaryMove
         backGroundView.layer.cornerRadius = 10
         backGroundView.clipsToBounds = true
         backGroundView.layer.masksToBounds = true
@@ -48,9 +48,7 @@ class SliderImagesCollectionViewCell: UICollectionViewCell {
         let cornerRadius = leftView.bounds.height / 2.0
         leftView.roundCorners(corners: [.topRight, .bottomRight], radius: cornerRadius)
         leftView.backgroundColor = Colors.primaryMove
-        leftView.clipsToBounds = true
-        leftView.layer.masksToBounds = true
-        
+
         backgroundOfButton.layer.cornerRadius = 12
         backgroundOfButton.layer.masksToBounds = true
     }

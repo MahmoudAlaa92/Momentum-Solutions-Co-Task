@@ -21,7 +21,7 @@ class SliderCollectionViewSection: CollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SliderImagesCollectionViewCell.cellIdentifier, for: indexPath) as? SliderImagesCollectionViewCell else { return UICollectionViewCell() }
         let item = sliderItems[indexPath.item]
         cell.topLabel.text = item.title
-        cell.middleLabel.text = item.releaseDate
+        cell.middleLabel.text = item.overview
         cell.bottomLabel.text = "Watch Now"
         cell.rightImage.setImage(with: Settings.imageBaseURL + (item.posterPath ?? ""), placeholderImage: Images.loading)
         return cell
@@ -48,11 +48,12 @@ struct SliderSectionLayoutProvider: LayoutSectionProvider {
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(150))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         /// Section
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 0, bottom: 10, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 0, bottom: 14, trailing: 0)
+        section.interGroupSpacing = 16
         
         return section
     }
